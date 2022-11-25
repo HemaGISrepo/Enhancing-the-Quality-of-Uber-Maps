@@ -1,10 +1,11 @@
-# Enhancing-the-Quality-of-Uber's-Maps-with-Metrics-Computation
+# Enhancing-the-Quality-of-Uber-Maps-with-Metrics-Computation
 
 On the surface, Uber’s ridesharing technology may seem simple: a user requests a ride from the app, and a driver arrives to take them to their destination. Behind the scenes, however, a giant infrastructure consisting of thousands of services and terabytes of data supports each and every trip on the platform.
 
 Rather than the simple, two-dimensional representations people see when they look at the Uber app, a map is actually a complex data structure. In computational terms, we need to define the size of each geographical portion of a map, as well as decide which objects are included/displayed on a map.
 
 How Uber defines a map region
+
 Before we can compute and report map quality metrics, we first need to define our map regions. For example, we might be interested in the map quality of North America, or the state of California, or Santa Clara County, or even just the most urban (and trafficked) areas of the city of San Francisco.
 
 Before Uber launches operations in a new area, we define and onboard a new region to our map technology stack. Inside this map region, we define subregions labeled with grades A, B, AB, and C, as follows:
@@ -19,6 +20,7 @@ Grade C: A set of highway corridors connecting various Uber Territories
 
 
 UBER MAP MODEL:
+
 Maps are intuitively defined by their purpose. A map orients us in space, letting us see where we are in the world. With a map, we can also navigate from where we are to where we want to go.
 From the perspective of determining map quality, we define a map as a collection of map features, from man-made places like road segments, junctions, and buildings to natural features such as mountains, lakes, and oceans. Further, for Uber-specific use cases, we include access points, which specify allowed or preferred pick-up and drop-off locations for a certain address point, as map features. For example, access points at the San Francisco International Airport include a set of terminals, gates, and airport-determined  gathering spots.
 
@@ -30,6 +32,7 @@ Map features and attributes form a data structure which we call the Uber Map Mod
 
 
 DETERMINING MAP QUALITY:
+
 Map quality means different things to different map users. For example, imaging tools such as Google Earth and Esri’s ArcGIS Earth might focus on the accuracy of map labels or the aesthetics of map cartography, i.e., how each map tiles looks. For Uber’s most basic use case, ridesharing, map quality metrics must answer questions such as:
 
 Do we have enough roads? Are we classifying them correctly?
@@ -43,9 +46,4 @@ Both simple and comparative metrics are computed automatically by using powerful
 
 Regardless of their categorization, all metrics computation must be accurate, execute reasonably fast, reliably generate output, and scale with no issues. Scaling is especially important, as a fatal error of a certain region’s metrics computation must not affect metrics computation in other regions.
 
-Requirements of Uber’s map quality computation system:
 
-Accuracy: the results must be accurate
-Reliability: the results must be repeatable and accessible
-Scalability: supporting metrics computation of both a single region and the world
-Robustness: the failure of metrics computation for one map region must not affect the computation of other regions
